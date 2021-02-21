@@ -23,6 +23,9 @@ class Player {
 	showMoney() {
 		console.log(`You got total ${this.total} chips`);
 	}
+	showHands() {
+		console.log(`> You got ${this.hands.join(', ')}`);
+	}
 }
 
 module.exports = Player;

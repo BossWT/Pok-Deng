@@ -54,13 +54,27 @@ const compareCards = (playerHands, dealerHands) => {
 	let playerCard1 = playerHands[0];
 	let playerCard2 = playerHands[1];
 	let playerCard3 = '';
-	let playerPoint1 = convertCard(playerCard1.split('-')[1]);
-	let playerPoint2 = convertCard(playerCard2.split('-')[1]);
+	let card1Split = playerCard1.split('-');
+	let card2Split = playerCard2.split('-');
+	let card3Split = [];
+	let playerPoint1 = convertCard(card1Split[1]);
+	let playerPoint2 = convertCard(card2Split[1]);
 	let playerPoint3 = 0;
+
+	///WIP : เด้ง แบบที่มีดอกซ้ำกัน
+	let deng = 1;
+
 	if (playerHands.length === 3) {
 		playerCard3 = playerHands[2];
-		playerPoint3 = convertCard(playerCard3.split('-')[1]);
+		card3Split = playerCard3.split('-');
+		playerPoint3 = convertCard(card3Split[1]);
+		if (card1Split[0] === card2Split[0] && card2Split[0] === card3Split[0])
+			deng = 3;
+	} else {
+		if (card1Split[0] === card2Split[0]) deng = 2;
 	}
+	// console.log(`----> Player deng = ${deng}`);
+	//----------
 
 	let dealerCard1 = dealerHands[0];
 	let dealerCard2 = dealerHands[1];
@@ -72,8 +86,6 @@ const compareCards = (playerHands, dealerHands) => {
 
 	if (playerPoints >= 10) playerPoints -= 10;
 	if (dealerPoints >= 10) dealerPoints -= 10;
-	console.log(playerPoints);
-	console.log(dealerPoints);
 
 	if (playerPoints > dealerPoints) return 'player';
 	else if (playerPoints < dealerPoints) return 'dealer';
@@ -83,7 +95,6 @@ const compareCards = (playerHands, dealerHands) => {
 module.exports = {
 	duplicated,
 	ask_question,
-	ask_continue,
 	dealCard,
 	compareCards
 };

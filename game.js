@@ -1,12 +1,7 @@
 const Player = require('./player');
 const prompt = require('prompt-sync')();
 
-const {
-	ask_question,
-	ask_continue,
-	dealCard,
-	compareCards
-} = require('./utility');
+const { ask_question, dealCard, compareCards } = require('./utility');
 
 let cards_out = [];
 let play = true;
@@ -17,12 +12,12 @@ while (play) {
 	const bet = parseInt(prompt('> '));
 
 	player.dealCards(cards_out);
-	console.log(`> You got ${player.hands.join(', ')}`);
+	player.showHands();
 	const drawMore = ask_question(
 		'Would you like to get 1 more card?(Yes/No)?'
 	);
 	if (drawMore) player.hands.push(dealCard(cards_out));
-	console.log(`> You got ${player.hands.join(', ')}`);
+	player.showHands();
 	dealerHands.push(dealCard(cards_out));
 	dealerHands.push(dealCard(cards_out));
 	console.log(`> The dealer got ${dealerHands.join(', ')}`);
