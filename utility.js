@@ -87,6 +87,9 @@ const compareCards = (playerHands, dealerHands) => {
 	if (playerPoints >= 10) playerPoints -= 10;
 	if (dealerPoints >= 10) dealerPoints -= 10;
 
+	if (playerPoints % 10 === 0) playerPoints = 0;
+	if (dealerPoints % 10 === 0) dealerPoints = 0;
+
 	if (playerPoints > dealerPoints) return 'player';
 	else if (playerPoints < dealerPoints) return 'dealer';
 	else return 'draw';
