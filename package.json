@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/BossWT/Pok-Deng/issues"
   },
-  "homepage": "https://github.com/BossWT/Pok-Deng#readme"
+  "homepage": "https://github.com/BossWT/Pok-Deng#readme",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
 }
