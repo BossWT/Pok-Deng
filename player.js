@@ -1,10 +1,9 @@
 const { dealCard } = require('./utility');
 
 class Player {
-	constructor(bet) {
-		this.bet = bet;
+	constructor() {
 		this.hands = [];
-		this.total = bet;
+		this.total = 0;
 	}
 	dealCards(cards_out) {
 		this.hands.push(dealCard(cards_out));
@@ -20,6 +19,9 @@ class Player {
 	}
 	endTurn() {
 		this.hands = [];
+	}
+	showMoney() {
+		console.log(`You got total ${this.total} chips`);
 	}
 }
 
